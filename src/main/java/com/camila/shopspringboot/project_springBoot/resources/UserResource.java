@@ -1,4 +1,4 @@
-package com.camila.shopspringboot.project_springBoot.resourcesProject;
+package com.camila.shopspringboot.project_springBoot.resources;
 
 
 import com.camila.shopspringboot.project_springBoot.entities.User;
