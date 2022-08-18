@@ -1,5 +1,7 @@
 package com.camila.shopspringboot.project_springBoot.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -15,6 +17,7 @@ public class Order implements Serializable {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private Instant moment;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
