@@ -1,12 +1,15 @@
 package com.camila.shopspringboot.project_springBoot.config;
 
+import com.camila.shopspringboot.project_springBoot.entities.Order;
 import com.camila.shopspringboot.project_springBoot.entities.User;
+import com.camila.shopspringboot.project_springBoot.repositories.OrderRepository;
 import com.camila.shopspringboot.project_springBoot.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.time.Instant;
 import java.util.Arrays;
 
 @Configuration
@@ -16,6 +19,9 @@ public class TesteConfig implements CommandLineRunner {
     @Autowired //Injeção de dependência
     private UserRepository userRepository;
 
+    @Autowired
+    private OrderRepository orderRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -24,7 +30,11 @@ public class TesteConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(user1,user2));
 
+        Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"),null);
+        Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), null);
+        Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), null);
 
+        orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 
     }
 }
