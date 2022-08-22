@@ -1,8 +1,10 @@
 package com.camila.shopspringboot.project_springBoot.config;
 
+import com.camila.shopspringboot.project_springBoot.entities.Category;
 import com.camila.shopspringboot.project_springBoot.entities.Order;
 import com.camila.shopspringboot.project_springBoot.entities.User;
 import com.camila.shopspringboot.project_springBoot.entities.enums.OrderStatus;
+import com.camila.shopspringboot.project_springBoot.repositories.CategoryRepository;
 import com.camila.shopspringboot.project_springBoot.repositories.OrderRepository;
 import com.camila.shopspringboot.project_springBoot.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class TesteConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -36,6 +41,13 @@ public class TesteConfig implements CommandLineRunner {
         Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"),OrderStatus.WAITING_PAYMENT, user1);
 
         orderRepository.saveAll(Arrays.asList(o1,o2,o3));
+
+        Category cat1 = new Category(null, "Eletrônicos");
+        Category cat2 = new Category(null, "Livros");
+        Category cat3 = new Category(null, "Computadores");
+
+        categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+
 
     }
 }
